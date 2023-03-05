@@ -5,6 +5,7 @@ function App () {
   const [firstValue, setFirstValue] = useState('')
   const [secondValue, setSecondValue] = useState('')
   const [wichValue, setWichValue] = useState(1)
+  const [operation, setOperation] = useState('')
   const [displayNumber, setDisplayNumber] = useState(0)
   const calcNumbs = [['9', '8', '7'], ['6', '5', '4'], ['3', '2', '1'], ['0', '.', '=']]
   const calcOps = ['+', '-', 'x', '/']
@@ -15,11 +16,27 @@ function App () {
     }
     return sumN !== '.' ? setValue(value + sumN) : null
   }
+
   const setValues = (n) => {
     if (wichValue !== 2) {
       return checkPeriod(firstValue, setFirstValue, n)
     }
     return checkPeriod(secondValue, setSecondValue, n)
+  }
+
+  const calculate = () => {
+    switch (operation) {
+      case '+':
+        return setDisplayNumber(parseFloat(firstValue) + parseFloat(secondValue))
+      case '-':
+        return setDisplayNumber(parseFloat(firstValue) - parseFloat(secondValue))
+      case 'x':
+        return setDisplayNumber(parseFloat(firstValue) * parseFloat(secondValue))
+      case '/':
+        return setDisplayNumber(parseFloat(firstValue) / parseFloat(secondValue))
+      default:
+        return null
+    }
   }
 
   useEffect(() => {
@@ -39,12 +56,12 @@ function App () {
             {calcNumbs.map((numb, index) => {
               return (
                 <div key={index + numb}>
-                  {numb.map((num) => { return (<button key={num} onClick={() => { return num !== '=' ? setValues(num) : null }}>{num}</button>) })}
+                  {numb.map((num) => { return (<button key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }}>{num}</button>) })}
                 </div>
               )
             })}
           </div>
-          <div className='calc-ops'>{calcOps.map((op) => { return (<button key={op} onClick={() => { setWichValue(2) }} disabled={wichValue === 2 ? true : null}>{op}</button>) })}</div>
+          <div className='calc-ops'>{calcOps.map((op) => { return (<button key={op} onClick={() => { setWichValue(2); setOperation(op) }} disabled={wichValue === 2 ? true : null}>{op}</button>) })}</div>
         </article>
       </section>
     </main>
