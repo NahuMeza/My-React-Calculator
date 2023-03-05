@@ -50,7 +50,10 @@ function App () {
   return (
     <main>
       <section>
-        <article className='calc-display'>{displayNumber || 0}</article>
+        <article className='calc-display'>
+          <button>AC</button>
+          {displayNumber || 0}
+        </article>
         <article className='calc-numbpad'>
           <div>
             {calcNumbs.map((numb, index) => {
