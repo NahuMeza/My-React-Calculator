@@ -7,6 +7,7 @@ function App () {
   const [wichValue, setWichValue] = useState(1)
   const [operation, setOperation] = useState('')
   const [displayNumber, setDisplayNumber] = useState(0)
+  const [numDisabled, setNumDisabled] = useState(false)
   const calcNumbs = [['9', '8', '7'], ['6', '5', '4'], ['3', '2', '1'], ['0', '.', '=']]
   const calcOps = ['+', '-', 'x', '/']
 
@@ -25,6 +26,7 @@ function App () {
   }
 
   const calculate = () => {
+    setNumDisabled(true)
     switch (operation) {
       case '+':
         return setDisplayNumber(parseFloat(firstValue) + parseFloat(secondValue))
@@ -51,7 +53,7 @@ function App () {
     <main>
       <section>
         <article className='calc-display'>
-          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue('') }}>AC</button>
+          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>AC</button>
           {displayNumber || 0}
         </article>
         <article className='calc-numbpad'>
@@ -59,7 +61,7 @@ function App () {
             {calcNumbs.map((numb, index) => {
               return (
                 <div key={index + numb}>
-                  {numb.map((num) => { return (<button key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }}>{num}</button>) })}
+                  {numb.map((num) => { return (<button key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disabled={numDisabled}>{num}</button>) })}
                 </div>
               )
             })}
