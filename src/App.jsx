@@ -51,7 +51,7 @@ function App () {
     <main>
       <section>
         <article className='calc-display'>
-          <button>AC</button>
+          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue('') }}>AC</button>
           {displayNumber || 0}
         </article>
         <article className='calc-numbpad'>
