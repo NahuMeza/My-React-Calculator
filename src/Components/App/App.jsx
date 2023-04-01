@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import CalcButton from '../CalcButton/CalcButton.jsx'
 
 function App () {
   const [firstValue, setFirstValue] = useState('')
@@ -10,6 +11,14 @@ function App () {
   const [numDisabled, setNumDisabled] = useState(false)
   const calcNumbs = [['9', '8', '7'], ['6', '5', '4'], ['3', '2', '1'], ['0', '.', '=']]
   const calcOps = ['+', '-', 'x', '/']
+
+  useEffect(() => {
+    if (wichValue === 1) {
+      setDisplayNumber(firstValue)
+    } else if (wichValue === 2) {
+      setDisplayNumber(secondValue)
+    }
+  }, [firstValue, secondValue, wichValue])
 
   const checkPeriod = (value, setValue, sumN) => {
     if (!value.includes('.')) {
@@ -41,19 +50,13 @@ function App () {
     }
   }
 
-  useEffect(() => {
-    if (wichValue === 1) {
-      setDisplayNumber(firstValue)
-    } else if (wichValue === 2) {
-      setDisplayNumber(secondValue)
-    }
-  }, [firstValue, secondValue, wichValue])
-
   return (
     <main>
       <section>
         <article className='calc-display'>
-          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>AC</button>
+          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>
+            AC
+          </button>
           {displayNumber || 0}
         </article>
         <article className='calc-numbpad'>
@@ -61,12 +64,26 @@ function App () {
             {calcNumbs.map((numb, index) => {
               return (
                 <div key={index + numb}>
-                  {numb.map((num) => { return (<button key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disabled={numDisabled}>{num}</button>) })}
+                  {numb.map((num) => {
+                    return (
+                      <CalcButton key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disab={numDisabled}>
+                        {num}
+                      </CalcButton>
+                    )
+                  })}
                 </div>
               )
             })}
           </div>
-          <div className='calc-ops'>{calcOps.map((op) => { return (<button key={op} onClick={() => { setWichValue(2); setOperation(op) }} disabled={wichValue === 2 ? true : null}>{op}</button>) })}</div>
+          <div className='calc-ops'>
+            {calcOps.map((op) => {
+              return (
+                <CalcButton key={op} onClick={() => { setWichValue(2); setOperation(op) }} disab={wichValue === 2 ? true : null}>
+                  {op}
+                </CalcButton>
+              )
+            })}
+          </div>
         </article>
       </section>
     </main>
