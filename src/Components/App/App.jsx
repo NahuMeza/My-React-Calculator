@@ -52,7 +52,7 @@ function App () {
 
   return (
     <main>
-      <section>
+      <section className='calc-case'>
         <article className='calc-display'>
           <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>
             AC

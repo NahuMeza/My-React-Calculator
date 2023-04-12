@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Graduate&display=swap');
 
 main{
     display: flex;
@@ -11,6 +12,16 @@ main{
     font-family: 'Crimson Text', serif;
     font-size: 1.5rem;
 }
+.calc-case{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    box-shadow: 26px 11px 35px 16px rgba(0, 0, 0, 0.51);
+    border-radius: 10px;
+}
 .calc-numbpad{
     display: flex;
     flex-direction: row;
@@ -19,12 +30,30 @@ main{
     display: flex;
     flex-direction: column;
 }
+
 .calc-display{
+    font-family: 'Graduate', 'cursive';
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(82, 82, 82, 0.911);
+    width: 350px;
+    height: 100px;
+    padding: 0 20px 0 20px;
+    font-size: 2em;
+    box-shadow: inset 0px 0px 35px 0px rgba(0, 0, 0, 0.39);
+    overflow: hidden;
 }
+
+.calc-display button{
+    width: 20%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #1e1e1e;
+    color: #cfcece;
+}
+
 button{
     width: 100px;
     height: 100px;
@@ -37,3 +66,4 @@ button:disabled{
     background-color: #1e1e1e;
     color: #fff;
 }
+
