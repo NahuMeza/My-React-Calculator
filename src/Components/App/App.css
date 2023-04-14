@@ -67,3 +67,29 @@ button:disabled{
     color: #fff;
 }
 
+.displayn{
+    width: 300px;
+    float: right;
+    direction: rtl;
+    overflow: scroll;
+}
+
+/* Estilos para el scroll */
+
+.displayn::-webkit-scrollbar{
+    -webkit-appearance: none;
+}
+
+.displayn::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.displayn::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #2b2c2c;
+}
+
+.displayn::-webkit-scrollbar-corner{
+    display: none;
+}

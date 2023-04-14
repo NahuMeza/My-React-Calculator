@@ -57,7 +57,9 @@ function App () {
           <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>
             AC
           </button>
-          {displayNumber || 0}
+          <div className='displayn'>
+            {displayNumber || 0}
+          </div>
         </article>
         <article className='calc-numbpad'>
           <div>
