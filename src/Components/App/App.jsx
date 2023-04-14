@@ -54,7 +54,7 @@ function App () {
     <main>
       <section className='calc-case'>
         <article className='calc-display'>
-          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }}>
+          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }} className='acButton'>
             AC
           </button>
           <div className='displayn'>
@@ -68,7 +68,7 @@ function App () {
                 <div key={index + numb}>
                   {numb.map((num) => {
                     return (
-                      <CalcButton key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disab={numDisabled}>
+                      <CalcButton key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disab={numDisabled} arrName='nums'>
                         {num}
                       </CalcButton>
                     )
@@ -80,7 +80,7 @@ function App () {
           <div className='calc-ops'>
             {calcOps.map((op) => {
               return (
-                <CalcButton key={op} onClick={() => { setWichValue(2); setOperation(op) }} disab={wichValue === 2 ? true : null}>
+                <CalcButton key={op} onClick={() => { setWichValue(2); setOperation(op) }} disab={wichValue === 2 ? true : null} arrName='calcOps'>
                   {op}
                 </CalcButton>
               )

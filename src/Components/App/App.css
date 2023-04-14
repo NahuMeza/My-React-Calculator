@@ -93,3 +93,31 @@ button:disabled{
 .displayn::-webkit-scrollbar-corner{
     display: none;
 }
+
+/* Estilos y hover para los botones */
+
+.calcOps{
+    background-color: #d6c5c5;
+}
+
+.nums{
+    background-color: #d6d6d6;
+}
+
+.equalButton{
+    background-color: #ffbbbb;
+}
+
+.nums:hover{
+    background-color: #b1b1b1;
+}
+.calcOps:hover{
+    background-color: #b4a4a4;
+}
+
+.equalButton:hover{
+    background-color: #d37c7c;
+}
+.acButton:hover{
+    background-color: #353535;
+}
