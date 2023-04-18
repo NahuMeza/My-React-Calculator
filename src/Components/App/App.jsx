@@ -1,10 +1,10 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { useValues } from '../../Hooks/useValues.js'
 import CalcButton from '../CalcButton/CalcButton.jsx'
 
 function App () {
-  const [firstValue, setFirstValue] = useState('')
-  const [secondValue, setSecondValue] = useState('')
+  const { firstValue, secondValue, updateValue, resetAll } = useValues()
   const [wichValue, setWichValue] = useState(1)
   const [operation, setOperation] = useState('')
   const [displayNumber, setDisplayNumber] = useState(0)
@@ -19,20 +19,6 @@ function App () {
       setDisplayNumber(secondValue)
     }
   }, [firstValue, secondValue, wichValue])
-
-  const checkPeriod = (value, setValue, sumN) => {
-    if (!value.includes('.')) {
-      return setValue(value + sumN)
-    }
-    return sumN !== '.' ? setValue(value + sumN) : null
-  }
-
-  const setValues = (n) => {
-    if (wichValue !== 2) {
-      return checkPeriod(firstValue, setFirstValue, n)
-    }
-    return checkPeriod(secondValue, setSecondValue, n)
-  }
 
   const calculate = () => {
     setNumDisabled(true)
@@ -54,7 +40,7 @@ function App () {
     <main>
       <section className='calc-case'>
         <article className='calc-display'>
-          <button onClick={() => { setWichValue(1); setFirstValue(''); setSecondValue(''); setNumDisabled(false) }} className='acButton'>
+          <button onClick={() => { setWichValue(1); resetAll(); setNumDisabled(false) }} className='acButton'>
             AC
           </button>
           <div className='displayn'>
@@ -68,7 +54,12 @@ function App () {
                 <div key={index + numb}>
                   {numb.map((num) => {
                     return (
-                      <CalcButton key={num} onClick={() => { return num !== '=' ? setValues(num) : calculate() }} disab={numDisabled} arrName='nums'>
+                      <CalcButton
+                        key={num}
+                        onClick={() => { return num !== '=' ? updateValue(num, wichValue) : calculate() }}
+                        disab={numDisabled}
+                        arrName={num !== '=' ? 'nums' : 'equalButton'}
+                      >
                         {num}
                       </CalcButton>
                     )
@@ -80,7 +71,12 @@ function App () {
           <div className='calc-ops'>
             {calcOps.map((op) => {
               return (
-                <CalcButton key={op} onClick={() => { setWichValue(2); setOperation(op) }} disab={wichValue === 2 ? true : null} arrName='calcOps'>
+                <CalcButton
+                  key={op}
+                  onClick={() => { setWichValue(2); setOperation(op) }}
+                  disab={wichValue === 2 ? true : null}
+                  arrName='calcOps'
+                >
                   {op}
                 </CalcButton>
               )
