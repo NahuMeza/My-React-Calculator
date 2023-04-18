@@ -10,7 +10,7 @@ export function useValues () {
     }
     return sumN !== '.' ? setValue(value + sumN) : null
   }
-  const resetAll = () => {
+  const resetValues = () => {
     setFirstValue('')
     setSecondValue('')
   }
@@ -19,5 +19,5 @@ export function useValues () {
       checkPeriod(firstValue, setFirstValue, n)
     } else { checkPeriod(secondValue, setSecondValue, n) }
   }
-  return { firstValue, secondValue, updateValue, resetAll }
+  return { firstValue, secondValue, updateValue, resetValues }
 }

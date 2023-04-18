@@ -4,7 +4,7 @@ import { useValues } from '../../Hooks/useValues.js'
 import CalcButton from '../CalcButton/CalcButton.jsx'
 
 function App () {
-  const { firstValue, secondValue, updateValue, resetAll } = useValues()
+  const { firstValue, secondValue, updateValue, resetValues } = useValues()
   const [wichValue, setWichValue] = useState(1)
   const [operation, setOperation] = useState('')
   const [displayNumber, setDisplayNumber] = useState(0)
@@ -40,7 +40,7 @@ function App () {
     <main>
       <section className='calc-case'>
         <article className='calc-display'>
-          <button onClick={() => { setWichValue(1); resetAll(); setNumDisabled(false) }} className='acButton'>
+          <button onClick={() => { setWichValue(1); resetValues(); setNumDisabled(false) }} className='acButton'>
             AC
           </button>
           <div className='displayn'>
