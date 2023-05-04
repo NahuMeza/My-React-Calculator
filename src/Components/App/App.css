@@ -123,13 +123,45 @@ button:disabled{
 }
 
 @media screen and (max-width: 500px){
-    .calc-display{
+
+    body{
+        width: 100vw;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #root{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    /* .calc-display{
         width: 300px;
         height: 400px;
-    }
+    } */
     main{
         width: 400px;
         height: 400px;
     }
-
+    .calc-case{
+        width: 300px;
+        height: 400px;
+    }
+    .calc-numbpad{
+        width: 300px;
+        height: 300px;
+    }
+    .calc-display{
+        width: 90%;
+        height: 30%;
+        padding: 10px 10px 10px 10px;
+        font-size: 1.8em;
+    }
+    button{
+        width: 75px;
+        height: 75px;
+        font-size: 1.2rem;
+    }
 }
