@@ -165,12 +165,18 @@ button:disabled{
     }
 }
 
-@media screen and (max-width: 830px) and (orentation:landscape){
-    #root{
+@media screen and (max-width: 830px) and (orientation:landscape){
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    main{
         display: none;
     }
     #root::after{
-        content: "Not supported :(";
+        content: "Not supported on landscape mod :(";
         display: flex;
         justify-content: center;
         align-items: center;
